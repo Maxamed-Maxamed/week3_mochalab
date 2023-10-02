@@ -48,5 +48,24 @@ describe("Catalogue", () => {
   });
 });
 
+/* The code you provided is a test case 
+for the `checkReorders` method of the `Catalogue` class. */
+describe("checkReorders", function () {
+    it("should return an empty array when no products need reordering", function () {
+      const result = cat.checkReorders();
+      expect(result.productIds).to.be.empty;
+    });
+    it("should report products that satisfy the reorder criteria", function () {
+      cat.addProduct(new Product("B123", "Product 4", 10, 20, 10.0));
+      cat.addProduct(new Product("B124", "Product 5", 10, 30, 10.0));
+      const result = cat.checkReorders();
+      expect(result.productIds).to.have.lengthOf(2);
+      expect(result.productIds).to.have.members(["B123", "B124"]);
+    });
+  });
+
+
+  
+
 
 
